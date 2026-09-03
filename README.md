@@ -84,3 +84,11 @@ Das Formular sendet die Angaben an die Google Apps Script Web-App:
 Die Daten werden nicht in GitHub gespeichert. Sie werden per POST an das Apps Script übermittelt und von dort in das verbundene Google Sheet geschrieben.
 
 Bitte nach dem Upload einmal einen Testeintrag absenden und im Google Sheet prüfen, ob die Zeile angekommen ist.
+
+
+## Vereinfachter Ablauf
+Der Ablauf ist jetzt:
+1. TWINT-Zahlung
+2. Frage: „Möchtest du ein Dankeschön?“
+3. Bei „Ja“ erscheinen die Eingabefelder
+4. Bei „Nein“ sind keine weiteren Angaben nötig

@@ -26,76 +26,50 @@ window.addEventListener("load", () => {
 // ----------------------------------------------------------
 const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbzTsNjAb7TTSK7SxAeqT44BfcaWVZDBbc-eA-F5aHfeLnHY6bnLGwCbP9LQZauzraSBqQ/exec";
 
-const rewardCards = document.querySelectorAll(".reward-card");
 const rewardForm = document.getElementById("reward-form");
-const amountInput = document.getElementById("support-amount");
 const rewardSelect = document.getElementById("reward-select");
-const selectedRewardLabel = document.getElementById("selected-reward-label");
 const addressField = document.getElementById("address-field");
-const rewardDetails = document.getElementById("reward-details");
 const formNote = document.getElementById("form-note");
-const rewardModeRadios = document.querySelectorAll('input[name="reward_mode"]');
+const yesNoButtons = document.querySelectorAll(".yes-no-button");
+const noMessage = document.getElementById("thanks-no-message");
 
 function isPhysicalReward(value) {
-  return ["Persönliches Dankegeschenk","Dankeskarte und kleines Hockey-Souvenir"].includes(value);
+  return [
+    "Persönliches Dankegeschenk",
+    "Dankeskarte und kleines Hockey-Souvenir"
+  ].includes(value);
 }
 
-function refreshRewardUI() {
-  const mode = document.querySelector('input[name="reward_mode"]:checked')?.value || "none";
-  if (mode === "reward") {
-    rewardDetails.classList.remove("hidden");
-  } else {
-    rewardDetails.classList.add("hidden");
-    rewardSelect.value = "";
-    addressField.classList.add("hidden");
-    selectedRewardLabel.textContent = "Kein Dankeschön";
-  }
-  if (mode === "reward" && rewardSelect.value) {
-    selectedRewardLabel.textContent = rewardSelect.options[rewardSelect.selectedIndex].text;
-    addressField.classList.toggle("hidden", !isPhysicalReward(rewardSelect.value));
-  }
-}
+yesNoButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    yesNoButtons.forEach(b => b.classList.remove("active"));
+    button.classList.add("active");
 
-rewardModeRadios.forEach(radio => radio.addEventListener("change", refreshRewardUI));
-rewardSelect.addEventListener("change", refreshRewardUI);
+    const answer = button.dataset.answer;
 
-rewardCards.forEach(card => {
-  card.addEventListener("click", () => {
-    rewardCards.forEach(c => c.classList.remove("active"));
-    card.classList.add("active");
-    document.querySelector('input[name="reward_mode"][value="reward"]').checked = true;
-    amountInput.value = card.dataset.amount;
-    rewardSelect.value = card.dataset.reward;
-    refreshRewardUI();
-    document.querySelector(".reward-checkout")?.scrollIntoView({behavior:"smooth",block:"center"});
+    if (answer === "yes") {
+      rewardForm.classList.remove("hidden");
+      noMessage.classList.add("hidden");
+      rewardForm.scrollIntoView({ behavior: "smooth", block: "nearest" });
+    } else {
+      rewardForm.classList.add("hidden");
+      noMessage.classList.remove("hidden");
+      rewardForm.reset();
+      addressField.classList.add("hidden");
+    }
   });
 });
 
-refreshRewardUI();
+rewardSelect.addEventListener("change", () => {
+  addressField.classList.toggle("hidden", !isPhysicalReward(rewardSelect.value));
+});
 
 rewardForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
   const submitButton = rewardForm.querySelector('button[type="submit"]');
   const data = new FormData(rewardForm);
-  const mode = data.get("reward_mode");
 
-  if (!data.get("name")?.trim()) {
-    formNote.textContent = "Bitte noch einen Namen eintragen.";
-    formNote.className = "submit-status error";
-    return;
-  }
-
-  if (!data.get("amount") || Number(data.get("amount")) <= 0) {
-    formNote.textContent = "Bitte den Unterstützungsbetrag eintragen.";
-    formNote.className = "submit-status error";
-    return;
-  }
-
-  if (mode !== "reward") {
-    data.set("reward", "");
-    data.set("address", "");
-  }
   data.set("publish_name", data.get("publish_name") ? "true" : "false");
 
   submitButton.disabled = true;
@@ -116,10 +90,11 @@ rewardForm.addEventListener("submit", async (event) => {
 
     setTimeout(() => {
       rewardForm.reset();
-      rewardCards.forEach(c => c.classList.remove("active"));
+      rewardForm.classList.add("hidden");
+      yesNoButtons.forEach(b => b.classList.remove("active"));
+      addressField.classList.add("hidden");
       submitButton.disabled = false;
       submitButton.textContent = "Angaben senden";
-      refreshRewardUI();
     }, 2500);
 
   } catch (error) {

@@ -564,3 +564,88 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
   .submit-row{align-items:stretch;flex-direction:column}
   .reward-submit{width:100%}
 }
+
+
+/* v5 – vereinfachter Ablauf nach TWINT */
+.simple-thanks-section{
+  background:#080d14;
+  border-top:1px solid var(--line);
+}
+.simple-thanks-card{
+  max-width:900px;
+  margin:0 auto;
+  padding:44px;
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:26px;
+  background:linear-gradient(145deg,rgba(23,105,255,.08),transparent 35%),#0a1018;
+  box-shadow:0 24px 70px rgba(0,0,0,.20);
+}
+.simple-thanks-card h2{
+  font-size:clamp(2rem,5vw,3.7rem);
+  margin-bottom:14px;
+}
+.simple-intro{
+  max-width:720px;
+  margin-bottom:26px;
+}
+.yes-no-row{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-bottom:24px;
+}
+.yes-no-button{
+  appearance:none;
+  border:0;
+  border-radius:14px;
+  padding:14px 20px;
+  min-width:170px;
+  font:inherit;
+  font-weight:800;
+  cursor:pointer;
+  color:#fff;
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  box-shadow:0 10px 30px rgba(23,105,255,.18);
+  transition:.18s ease;
+}
+.yes-no-button.secondary{
+  background:#111a25;
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:none;
+}
+.yes-no-button:hover{transform:translateY(-1px)}
+.yes-no-button.active{
+  outline:2px solid rgba(0,168,255,.35);
+  outline-offset:2px;
+}
+.thanks-message{
+  margin-top:10px;
+  padding:18px 20px;
+  border-radius:14px;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  color:#c7d0dc;
+  font-weight:700;
+}
+#reward-form{
+  margin-top:24px;
+  padding-top:24px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.simple-form-grid{
+  display:grid;
+  grid-template-columns:1.2fr 1.2fr .8fr;
+  gap:14px;
+  margin-top:16px;
+}
+@media(max-width:800px){
+  .simple-form-grid{grid-template-columns:1fr 1fr}
+  .simple-form-grid .field:last-child{grid-column:1/-1}
+}
+@media(max-width:600px){
+  .simple-thanks-card{padding:26px 20px}
+  .yes-no-row{display:grid;grid-template-columns:1fr}
+  .yes-no-button{width:100%}
+  .simple-form-grid{grid-template-columns:1fr}
+  .simple-form-grid .field:last-child{grid-column:auto}
+}
