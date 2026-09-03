@@ -38,3 +38,33 @@ Lege den QR-Code z. B. unter `assets/twint-qr.png` ab und ersetze den Platzhalte
 ## GitHub Pages
 Repository auf GitHub erstellen, Dateien hochladen/committen und unter
 Settings → Pages → Deploy from a branch aktivieren.
+
+
+## Unterstützer eintragen
+In `index.html` im Abschnitt **Unsere Unterstützer** weitere Namen ergänzen:
+
+```html
+<span class="supporter-pill">Familie Muster</span>
+```
+
+Anonyme Spender können so erscheinen:
+
+```html
+<span class="supporter-pill anonymous">Anonym</span>
+```
+
+Bitte Namen nur veröffentlichen, wenn die Person damit einverstanden ist.
+
+## Firmenlogos / Sponsoren
+Logo-Datei in `assets/` ablegen, zum Beispiel `assets/firma-muster.png`.
+
+Dann einen Platzhalter in `index.html` ersetzen durch:
+
+```html
+<a class="sponsor-card" href="https://www.firma-muster.ch" target="_blank" rel="noopener">
+  <img src="assets/firma-muster.png" alt="Logo Firma Muster">
+  <span>Firma Muster</span>
+</a>
+```
+
+Für Logos funktionieren PNG oder SVG mit transparentem Hintergrund besonders gut.
