@@ -153,8 +153,8 @@
 
 
     <section id="spenden" class="section donate-section">
-      <div class="shell donate-grid">
-        <div>
+      <div class="shell">
+        <div style="margin-bottom: 28px;">
           <p class="kicker">JETZT UNTERSTÜTZEN</p>
           <h2>Jeder Beitrag zählt.</h2>
           <p class="lead">
@@ -162,50 +162,52 @@
           </p>
         </div>
 
-        <div class="qr-card">
-          <div class="qr-placeholder">
-            <div class="qr-grid">TWINT<br>QR</div>
+        <div class="donate-grid">
+          <div class="qr-card">
+            <div class="qr-placeholder">
+              <div class="qr-grid">TWINT<br>QR</div>
+            </div>
+            <h3>Mit TWINT unterstützen</h3>
+            <p>QR-Code mit der TWINT-App scannen und gewünschten Betrag eingeben.</p>
+            <small>Hier später dein echter TWINT-QR-Code als Bild einsetzen.</small>
           </div>
-          <h3>Mit TWINT unterstützen</h3>
-          <p>QR-Code mit der TWINT-App scannen und gewünschten Betrag eingeben.</p>
-          <small>Hier später dein echter TWINT-QR-Code als Bild einsetzen.</small>
+
+          <div class="qr-card">
+            <div style="font-size: 2.2rem; margin-bottom: 12px;">🏦</div>
+            <h3>Per Banküberweisung</h3>
+            <p>Kein TWINT? Du kannst mich auch direkt per Banküberweisung unterstützen.</p>
+
+            <div style="text-align:left; margin-top:20px;">
+              <small style="display:block; margin-bottom:5px;">IBAN</small>
+              <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:16px;">
+                <strong id="iban-value" style="font-size:1rem;">CH00 0000 0000 0000 0000 0</strong>
+                <button
+                  type="button"
+                  class="button ghost"
+                  style="padding:8px 12px; font-size:.8rem;"
+                  onclick="
+                    navigator.clipboard.writeText(document.getElementById('iban-value').textContent.trim());
+                    this.textContent='Kopiert ✓';
+                    setTimeout(() => this.textContent='IBAN kopieren', 1800);
+                  "
+                >IBAN kopieren</button>
+              </div>
+
+              <small style="display:block; margin-bottom:5px;">Kontoinhaber</small>
+              <strong style="display:block; margin-bottom:16px;">VORNAME NACHNAME</strong>
+
+              <small style="display:block; margin-bottom:5px;">Zahlungszweck</small>
+              <strong>Joni Hockey</strong>
+            </div>
+          </div>
         </div>
       </div>
+    </section>
 
-       <div class="payment-card bank-card">
-          <div class="payment-icon">🏦</div>
-          <div class="payment-card-content">
-            <p class="payment-label">BANKÜBERWEISUNG</p>
-            <h3>Kein TWINT? Kein Problem.</h3>
-            <p>Du kannst Joni auch direkt per Banküberweisung unterstützen.</p>
-
-            <div class="bank-details">
-              <div class="bank-row">
-                <span class="bank-key">IBAN</span>
-                <div class="bank-value-row">
-                  <code id="iban-value">CH00 0000 0000 0000 0000 0</code>
-                  <button type="button" class="copy-button" onclick="copyIban()">IBAN kopieren</button>
-                </div>
-              </div>
-
-              <div class="bank-row">
-                <span class="bank-key">Kontoinhaber</span>
-                <strong>VORNAME NACHNAME</strong>
-              </div>
-
-              <div class="bank-row">
-                <span class="bank-key">Zahlungszweck</span>
-                <strong>Joni Hockey</strong>
-              </div>
-            </div>
-
-      
- <!--   </section>
-
-    <section class="section simple-thanks-section"> -->
+    <section class="section simple-thanks-section">
       <div class="shell">
         <div class="simple-thanks-card">
-          <p class="kicker">NACH DER TWINT-ZAHLUNG</p>
+          <p class="kicker">NACH DER ZAHLUNG</p>
           <h2>Möchtest du dein Dankeschön-Geschenk?</h2>
           <p class="simple-intro">
             Wenn ja, hinterlasse mir kurz deine Angaben. Wenn nein, musst du nichts weiter machen –
@@ -277,7 +279,6 @@
         </div>
       </div>
     </section>
-
 
 
     <section class="section supporters-section">
