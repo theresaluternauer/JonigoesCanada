@@ -68,3 +68,9 @@ Dann einen Platzhalter in `index.html` ersetzen durch:
 ```
 
 Für Logos funktionieren PNG oder SVG mit transparentem Hintergrund besonders gut.
+
+
+## Dankeschön-Bereich
+Die Seite enthält jetzt auswählbare Unterstützungsstufen: CHF 20 Fan, CHF 30 digitaler Hockey-Gruss, CHF 50 persönliches Dankegeschenk und CHF 100 Superfan.
+
+Das Formular ist aktuell nur interaktiv und speichert/versendet noch keine persönlichen Daten. Vor der Veröffentlichung sollte dafür ein sicherer Formular-Dienst oder ein kleines Backend angebunden werden.

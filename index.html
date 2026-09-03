@@ -124,6 +124,8 @@
     <section class="section costs-section">
       <div class="shell">
         <p class="kicker">WOHIN GEHT DIE UNTERSTÜTZUNG?</p>
+        <h2>Transparent & direkt.</h2>
+
         <div class="cost-grid">
           <article class="cost-card">
             <span>🏒</span>
@@ -145,6 +147,66 @@
             <h3>Hockey</h3>
             <p>Weitere eventbezogene Ausgaben.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="section rewards-section">
+      <div class="shell">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">KLEINES DANKESCHÖN</p>
+            <h2>Wenn du möchtest.</h2>
+          </div>
+          <p>Deine Unterstützung ist für uns das Wichtigste. Wer möchte, darf sich als kleine Aufmerksamkeit ein persönliches Dankeschön auswählen.</p>
+        </div>
+
+        <div class="reward-grid">
+          <button type="button" class="reward-card" data-amount="20" data-reward="Name auf der Unterstützer-Wall">
+            <span class="reward-amount">CHF 20</span><strong>Fan</strong>
+            <small>Name auf der Unterstützer-Wall, wenn gewünscht</small>
+          </button>
+          <button type="button" class="reward-card" data-amount="30" data-reward="Digitaler Hockey-Gruss">
+            <span class="reward-amount">CHF 30</span><strong>Hockey-Gruss</strong>
+            <small>Persönliches digitales Dankesfoto nach dem Event</small>
+          </button>
+          <button type="button" class="reward-card" data-amount="50" data-reward="Persönliches Dankegeschenk">
+            <span class="reward-amount">CHF 50</span><strong>Persönliches Dankegeschenk</strong>
+            <small>Eine kleine persönliche Überraschung als Dankeschön</small>
+          </button>
+          <button type="button" class="reward-card" data-amount="100" data-reward="Dankeskarte und kleines Hockey-Souvenir">
+            <span class="reward-amount">CHF 100</span><strong>Superfan</strong>
+            <small>Dankeskarte + kleines Hockey-Souvenir vom Event</small>
+          </button>
+        </div>
+
+        <div class="reward-form-card">
+          <div class="reward-form-head">
+            <div><p class="kicker">OPTIONAL</p><h3>Dankeschön auswählen &amp; Namen eintragen</h3></div>
+            <span id="selected-reward-label">Noch nichts ausgewählt</span>
+          </div>
+          <form id="reward-form">
+            <div class="form-grid">
+              <label><span>Name</span><input type="text" name="name" placeholder="Vorname oder Familie"></label>
+              <label><span>E-Mail</span><input type="email" name="email" placeholder="name@beispiel.ch"></label>
+              <label><span>Unterstützungsbetrag</span><input type="number" id="support-amount" name="amount" min="1" placeholder="z. B. 50"></label>
+              <label><span>Gewünschtes Dankeschön</span>
+                <select id="reward-select" name="reward">
+                  <option value="">Nein danke – einfach Go Joni! 🏒</option>
+                  <option value="Name auf der Unterstützer-Wall">Name auf der Unterstützer-Wall</option>
+                  <option value="Digitaler Hockey-Gruss">Digitaler Hockey-Gruss</option>
+                  <option value="Persönliches Dankegeschenk">Persönliches Dankegeschenk</option>
+                  <option value="Dankeskarte und kleines Hockey-Souvenir">Dankeskarte + kleines Hockey-Souvenir</option>
+                </select>
+              </label>
+            </div>
+            <label class="full-field hidden" id="address-field"><span>Postadresse <small>(nur bei einem physischen Dankeschön)</small></span><textarea name="address" rows="3" placeholder="Strasse, PLZ, Ort"></textarea></label>
+            <label class="check-row"><input type="checkbox" name="publish_name"><span>Mein Name darf auf der Unterstützer-Wall veröffentlicht werden.</span></label>
+            <label class="check-row"><input type="checkbox" name="no_reward"><span>Ich möchte kein Dankeschön – meine Unterstützung ist einfach für Joni. ❤️</span></label>
+            <button type="submit" class="button primary reward-submit">Angaben vormerken</button>
+            <p class="form-note" id="form-note">Hinweis: Dieses Formular speichert oder versendet aktuell noch keine Daten. Die sichere Formularübermittlung wird im nächsten Schritt angebunden.</p>
+          </form>
         </div>
       </div>
     </section>
@@ -187,7 +249,7 @@
         <div class="section-heading">
           <div>
             <p class="kicker">DANKE FÜR EURE UNTERSTÜTZUNG</p>
-            <h2>Meine Unterstützer.</h2>
+            <h2>Unsere Unterstützer.</h2>
           </div>
           <p>
             Namen veröffentlichen wir nur mit Einverständnis. Wer lieber anonym bleiben möchte,
@@ -196,7 +258,7 @@
         </div>
 
         <div class="supporter-list">
-          <span class="supporter-pill">Mama und Papa</span>
+          <span class="supporter-pill">Anna &amp; Marc</span>
           <span class="supporter-pill">Familie Keller</span>
           <span class="supporter-pill">Peter</span>
           <span class="supporter-pill anonymous">Anonym</span>
@@ -209,7 +271,7 @@
         <div class="section-heading">
           <div>
             <p class="kicker">SPONSOREN &amp; PARTNER</p>
-            <h2>Danke an meine Sponsoren.</h2>
+            <h2>Danke an unsere Sponsoren.</h2>
           </div>
           <p>
             Firmen und Partner können hier mit Logo und auf Wunsch mit Link zur eigenen Webseite
@@ -226,7 +288,15 @@
             <div class="sponsor-logo-placeholder">LOGO</div>
             <span>Sponsor 2</span>
           </a>
-
+          <a class="sponsor-card" href="#" aria-label="Sponsor 3">
+            <div class="sponsor-logo-placeholder">LOGO</div>
+            <span>Sponsor 3</span>
+          </a>
+          <a class="sponsor-card" href="#" aria-label="Sponsor 4">
+            <div class="sponsor-logo-placeholder">LOGO</div>
+            <span>Sponsor 4</span>
+          </a>
+        </div>
 
         <p class="sponsor-note">
           Firmenlogos am besten als PNG oder SVG mit transparentem Hintergrund im Ordner
@@ -240,7 +310,8 @@
         <p class="kicker">DANKE ❤️</p>
         <h2>Danke, dass ihr Joni unterstützt.</h2>
         <p>
-          Jede Unterstützung, finanziell, durch Weiterleiten der Seite oder einfach durch Anfeuern, bedeutet uns sehr viel.
+          Jede Unterstützung – finanziell, durch Weiterleiten der Seite oder einfach durch Anfeuern –
+          bedeutet uns sehr viel.
         </p>
         <div class="signature">#GoJoni 🏒</div>
       </div>
