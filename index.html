@@ -150,40 +150,7 @@
         </div>
       </div>
     </section>
-
-
-    <section class="section rewards-section">
-      <div class="shell">
-        <div class="section-heading">
-          <div>
-            <p class="kicker">KLEINES DANKESCHÖN</p>
-            <h2>Wenn du möchtest.</h2>
-          </div>
-          <p>Deine Unterstützung ist für uns das Wichtigste. Wer möchte, darf sich als kleine Aufmerksamkeit ein persönliches Dankeschön auswählen.</p>
-        </div>
-
-        <div class="reward-grid">
-          <button type="button" class="reward-card" data-amount="20" data-reward="Name auf der Unterstützer-Wall">
-            <span class="reward-amount">CHF 20</span><strong>Fan</strong>
-            <small>Name auf der Unterstützer-Wall, wenn gewünscht</small>
-          </button>
-          <button type="button" class="reward-card" data-amount="30" data-reward="Digitaler Hockey-Gruss">
-            <span class="reward-amount">CHF 30</span><strong>Hockey-Gruss</strong>
-            <small>Persönliches digitales Dankesfoto nach dem Event</small>
-          </button>
-          <button type="button" class="reward-card" data-amount="50" data-reward="Persönliches Dankegeschenk">
-            <span class="reward-amount">CHF 50</span><strong>Persönliches Dankegeschenk</strong>
-            <small>Eine kleine persönliche Überraschung als Dankeschön</small>
-          </button>
-          <button type="button" class="reward-card" data-amount="100" data-reward="Dankeskarte und kleines Hockey-Souvenir">
-            <span class="reward-amount">CHF 100</span><strong>Superfan</strong>
-            <small>Dankeskarte + kleines Hockey-Souvenir vom Event</small>
-          </button>
-        </div>
-      </div>
-    </section>
-
-    <section id="spenden" class="section donate-section">
+<section id="spenden" class="section donate-section">
       <div class="shell donate-grid">
         <div>
           <p class="kicker">JETZT UNTERSTÜTZEN</p>
@@ -221,8 +188,8 @@
           <p class="kicker">NACH DER TWINT-ZAHLUNG</p>
           <h2>Möchtest du ein Dankeschön?</h2>
           <p class="simple-intro">
-            Wenn ja, hinterlasse uns kurz deine Angaben. Wenn nein, musst du nichts weiter machen –
-            deine Unterstützung ist bereits angekommen. ❤️
+            Deine Unterstützung ist für uns das Wichtigste. Wenn du möchtest, darfst du dir direkt hier
+            ein kleines Dankeschön aussuchen.
           </p>
 
           <div class="yes-no-row" role="group" aria-label="Dankeschön auswählen">
@@ -235,55 +202,70 @@
           </div>
 
           <form id="reward-form" style="display:none">
-            <div class="field">
-              <label for="reward-select">Welches Dankeschön möchtest du?</label>
-              <select id="reward-select" name="reward" required>
-                <option value="">Bitte auswählen</option>
-                <option value="Name auf der Unterstützer-Wall">CHF 20 – Name auf der Unterstützer-Wall</option>
-                <option value="Digitaler Hockey-Gruss">CHF 30 – Digitaler Hockey-Gruss</option>
-                <option value="Persönliches Dankegeschenk">CHF 50 – Persönliches Dankegeschenk</option>
-                <option value="Dankeskarte und kleines Hockey-Souvenir">CHF 100 – Dankeskarte + kleines Hockey-Souvenir</option>
-              </select>
+            <p class="reward-choice-title">Wähle dein Dankeschön:</p>
+
+            <div class="reward-grid compact-reward-grid">
+              <button type="button" class="reward-card" data-amount="20" data-reward="Name auf der Unterstützer-Wall">
+                <span class="reward-amount">CHF 20</span><strong>Fan</strong>
+                <small>Name auf der Unterstützer-Wall, wenn gewünscht</small>
+              </button>
+              <button type="button" class="reward-card" data-amount="30" data-reward="Digitaler Hockey-Gruss">
+                <span class="reward-amount">CHF 30</span><strong>Hockey-Gruss</strong>
+                <small>Persönliches digitales Dankesfoto nach dem Event</small>
+              </button>
+              <button type="button" class="reward-card" data-amount="50" data-reward="Persönliches Dankegeschenk">
+                <span class="reward-amount">CHF 50</span><strong>Persönliches Dankegeschenk</strong>
+                <small>Eine kleine persönliche Überraschung</small>
+              </button>
+              <button type="button" class="reward-card" data-amount="100" data-reward="Dankeskarte und kleines Hockey-Souvenir">
+                <span class="reward-amount">CHF 100</span><strong>Superfan</strong>
+                <small>Dankeskarte + kleines Hockey-Souvenir</small>
+              </button>
             </div>
 
-            <div class="simple-form-grid">
-              <div class="field">
-                <label for="support-name">Name</label>
-                <input id="support-name" type="text" name="name" placeholder="z. B. Familie Muster" required>
-              </div>
+            <input type="hidden" id="reward-select" name="reward" required>
 
-              <div class="field">
-                <label for="support-email">E-Mail</label>
-                <input id="support-email" type="email" name="email" placeholder="name@beispiel.ch" required>
-              </div>
+            <div id="details-fields" class="details-fields hidden">
+              <p class="details-title">Noch kurz deine Angaben:</p>
+              <div class="simple-form-grid">
+                <div class="field">
+                  <label for="support-name">Name</label>
+                  <input id="support-name" type="text" name="name" placeholder="z. B. Familie Muster" required>
+                </div>
 
-              <div class="field">
-                <label for="support-amount">Unterstützungsbetrag</label>
-                <div class="money-field">
-                  <span>CHF</span>
-                  <input id="support-amount" type="number" name="amount" min="1" inputmode="numeric" placeholder="50" required>
+                <div class="field">
+                  <label for="support-email">E-Mail</label>
+                  <input id="support-email" type="email" name="email" placeholder="name@beispiel.ch" required>
+                </div>
+
+                <div class="field">
+                  <label for="support-amount">Unterstützungsbetrag</label>
+                  <div class="money-field">
+                    <span>CHF</span>
+                    <input id="support-amount" type="number" name="amount" min="1" inputmode="numeric" required>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <div id="address-field" class="field full-field hidden">
-              <label for="support-address">Postadresse</label>
-              <textarea id="support-address" name="address" rows="3" placeholder="Strasse&#10;PLZ Ort"></textarea>
-            </div>
+              <div id="address-field" class="field full-field hidden">
+                <label for="support-address">Postadresse</label>
+                <textarea id="support-address" name="address" rows="3" placeholder="Strasse&#10;PLZ Ort"></textarea>
+              </div>
 
-            <label class="privacy-toggle">
-              <input type="checkbox" name="publish_name">
-              <span class="toggle-ui"></span>
-              <span>
-                <strong>Auf der Unterstützer-Wall erscheinen</strong>
-                <small>Mein Name darf auf dieser Webseite veröffentlicht werden.</small>
-              </span>
-            </label>
+              <label class="privacy-toggle">
+                <input type="checkbox" name="publish_name">
+                <span class="toggle-ui"></span>
+                <span>
+                  <strong>Auf der Unterstützer-Wall erscheinen</strong>
+                  <small>Mein Name darf auf dieser Webseite veröffentlicht werden.</small>
+                </span>
+              </label>
 
-            <div class="submit-row">
-              <button type="submit" class="button primary reward-submit">Angaben senden</button>
-              <div class="submit-status" id="form-note">
-                Die Angaben werden an unser Sponsoren-Sheet übertragen.
+              <div class="submit-row">
+                <button type="submit" class="button primary reward-submit">Angaben senden</button>
+                <div class="submit-status" id="form-note">
+                  Die Angaben werden an unser Sponsoren-Sheet übertragen.
+                </div>
               </div>
             </div>
           </form>

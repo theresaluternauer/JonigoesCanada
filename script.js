@@ -18,12 +18,12 @@ document.addEventListener("DOMContentLoaded", () => {
   if (fill) requestAnimationFrame(() => fill.style.width = prozent + "%");
 });
 
-// Google-Sheet Web-App
 const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbzTsNjAb7TTSK7SxAeqT44BfcaWVZDBbc-eA-F5aHfeLnHY6bnLGwCbP9LQZauzraSBqQ/exec";
 
 function showThankYouForm(show) {
   const form = document.getElementById("reward-form");
   const noMessage = document.getElementById("thanks-no-message");
+  const details = document.getElementById("details-fields");
   const buttons = document.querySelectorAll(".yes-no-button");
 
   buttons.forEach(b => b.classList.toggle(
@@ -38,8 +38,9 @@ function showThankYouForm(show) {
     form.style.display = "none";
     noMessage.style.display = "block";
     form.reset();
-    const address = document.getElementById("address-field");
-    if (address) address.classList.add("hidden");
+    details.classList.add("hidden");
+    document.querySelectorAll(".reward-card").forEach(c => c.classList.remove("active"));
+    document.getElementById("address-field").classList.add("hidden");
   }
 }
 
@@ -50,16 +51,32 @@ function isPhysicalReward(value) {
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("reward-form");
-  const rewardSelect = document.getElementById("reward-select");
+  const rewardInput = document.getElementById("reward-select");
+  const amountInput = document.getElementById("support-amount");
   const addressField = document.getElementById("address-field");
+  const details = document.getElementById("details-fields");
   const formNote = document.getElementById("form-note");
+  const rewardCards = document.querySelectorAll(".reward-card");
 
-  rewardSelect.addEventListener("change", () => {
-    addressField.classList.toggle("hidden", !isPhysicalReward(rewardSelect.value));
+  rewardCards.forEach(card => {
+    card.addEventListener("click", () => {
+      rewardCards.forEach(c => c.classList.remove("active"));
+      card.classList.add("active");
+      rewardInput.value = card.dataset.reward;
+      amountInput.value = card.dataset.amount;
+      addressField.classList.toggle("hidden", !isPhysicalReward(card.dataset.reward));
+      details.classList.remove("hidden");
+    });
   });
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+
+    if (!rewardInput.value) {
+      formNote.textContent = "Bitte zuerst ein Dankeschön auswählen.";
+      formNote.className = "submit-status error";
+      return;
+    }
 
     if (!form.reportValidity()) return;
 
@@ -86,7 +103,9 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         form.reset();
         form.style.display = "none";
+        details.classList.add("hidden");
         addressField.classList.add("hidden");
+        rewardCards.forEach(c => c.classList.remove("active"));
         document.querySelectorAll(".yes-no-button").forEach(b => b.classList.remove("active"));
         button.disabled = false;
         button.textContent = "Angaben senden";
