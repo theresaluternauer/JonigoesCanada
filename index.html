@@ -205,81 +205,129 @@
     </section>
 
     <section class="section simple-thanks-section">
-      <div class="shell">
-        <div class="simple-thanks-card">
-          <p class="kicker">NACH DER ZAHLUNG</p>
-          <h2>Möchtest du dein Dankeschön-Geschenk?</h2>
-          <p class="simple-intro">
-            Wenn ja, hinterlasse mir kurz deine Angaben. Wenn nein, musst du nichts weiter machen –
-            deine Unterstützung ist bereits angekommen. ❤️
-          </p>
+  <div class="shell">
+    <div class="simple-thanks-card">
 
-          <div class="yes-no-row" role="group" aria-label="Dankeschön auswählen">
-            <button type="button" class="yes-no-button" data-answer="yes" onclick="showThankYouForm(true)">Ja, gerne 🎁</button>
-            <button type="button" class="yes-no-button secondary" data-answer="no" onclick="showThankYouForm(false)">Nein, danke ❤️</button>
-          </div>
+      <p class="kicker">EIN KLEINES DANKESCHÖN ❤️</p>
+      <h2>Wir möchten uns bei dir bedanken.</h2>
 
-          <div id="thanks-no-message" class="thanks-message" style="display:none">
-            Danke für deine Unterstützung – und Go Joni! 🏒
-          </div>
+      <p class="simple-intro">
+        Deine Unterstützung bedeutet uns viel. Bei ausgewählten Spenden
+        möchten wir uns deshalb mit einer kleinen Überraschung bedanken.
+        Wenn du ein Dankeschön erhalten möchtest, hinterlasse uns nach
+        der Zahlung einfach deine Angaben.
+      </p>
 
-          <form id="reward-form" style="display:none">
-            <div class="field">
-              <label for="reward-select">Welches Dankeschön möchtest du?</label>
-              <select id="reward-select" name="reward" required>
-                <option value="">Bitte auswählen</option>
-                <option value="Name auf der Unterstützer-Wall">ab CHF 20 – Name auf der Unterstützer-Wall</option>
-                <option value="Digitaler Hockey-Gruss">ab CHF 30 – Digitaler Hockey-Gruss</option>
-                <option value="Persönliches Dankegeschenk">ab CHF 50 – Persönliches Dankegeschenk</option>
-                <option value="Dankeskarte und kleines Hockey-Souvenir">ab CHF 100 – Dankeskarte + kleines Hockey-Souvenir</option>
-              </select>
-            </div>
+      <div class="yes-no-row" role="group" aria-label="Dankeschön erhalten">
+        <button
+          type="button"
+          class="yes-no-button"
+          data-answer="yes"
+          onclick="showThankYouForm(true)">
+          Ja, gerne 🎁
+        </button>
 
-            <div class="simple-form-grid">
-              <div class="field">
-                <label for="support-name">Name</label>
-                <input id="support-name" type="text" name="name" placeholder="z. B. Familie Muster" required>
-              </div>
-
-              <div class="field">
-                <label for="support-email">E-Mail</label>
-                <input id="support-email" type="email" name="email" placeholder="name@beispiel.ch" required>
-              </div>
-
-              <div class="field">
-                <label for="support-amount">Unterstützungsbetrag</label>
-                <div class="money-field">
-                  <span>CHF</span>
-                  <input id="support-amount" type="number" name="amount" min="1" inputmode="numeric" placeholder="50" required>
-                </div>
-              </div>
-            </div>
-
-            <div id="address-field" class="field full-field hidden">
-              <label for="support-address">Postadresse</label>
-              <textarea id="support-address" name="address" rows="3" placeholder="Strasse&#10;PLZ Ort"></textarea>
-            </div>
-
-            <label class="privacy-toggle">
-              <input type="checkbox" name="publish_name">
-              <span class="toggle-ui"></span>
-              <span>
-                <strong>Auf der Unterstützer-Wall erscheinen</strong>
-                <small>Mein Name darf auf dieser Webseite veröffentlicht werden.</small>
-              </span>
-            </label>
-
-            <div class="submit-row">
-              <button type="submit" class="button primary reward-submit">Angaben senden</button>
-              <div class="submit-status" id="form-note">
-                Die Angaben werden an unser Sponsoren-Sheet übertragen.
-              </div>
-            </div>
-          </form>
-        </div>
+        <button
+          type="button"
+          class="yes-no-button secondary"
+          data-answer="no"
+          onclick="showThankYouForm(false)">
+          Nein, danke ❤️
+        </button>
       </div>
-    </section>
 
+      <div id="thanks-no-message"
+           class="thanks-message"
+           style="display:none">
+        Danke für deine Unterstützung – und Go Joni! 🏒
+      </div>
+
+      <form id="reward-form" style="display:none">
+
+        <div class="simple-form-grid">
+
+          <div class="field">
+            <label for="support-name">Name</label>
+            <input
+              id="support-name"
+              type="text"
+              name="name"
+              placeholder="z. B. Familie Muster"
+              required>
+          </div>
+
+          <div class="field">
+            <label for="support-email">E-Mail</label>
+            <input
+              id="support-email"
+              type="email"
+              name="email"
+              placeholder="name@beispiel.ch"
+              required>
+          </div>
+
+          <div class="field">
+            <label for="support-amount">Unterstützungsbetrag</label>
+
+            <div class="money-field">
+              <span>CHF</span>
+              <input
+                id="support-amount"
+                type="number"
+                name="amount"
+                min="1"
+                inputmode="numeric"
+                placeholder="50"
+                required>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="field full-field">
+          <label for="support-address">Postadresse</label>
+          <textarea
+            id="support-address"
+            name="address"
+            rows="3"
+            placeholder="Strasse und Hausnummer&#10;PLZ Ort"
+            required></textarea>
+          <small>
+            Wir benötigen deine Adresse nur, wenn wir dir ein Dankeschön
+            zusenden dürfen.
+          </small>
+        </div>
+
+        <label class="privacy-toggle">
+          <input type="checkbox" name="publish_name">
+          <span class="toggle-ui"></span>
+
+          <span>
+            <strong>Auf der Unterstützer-Wall erscheinen</strong>
+            <small>
+              Mein Name darf auf dieser Webseite veröffentlicht werden.
+            </small>
+          </span>
+        </label>
+
+        <div class="submit-row">
+          <button
+            type="submit"
+            class="button primary reward-submit">
+            Angaben senden
+          </button>
+
+          <div class="submit-status" id="form-note">
+            Deine Angaben werden nur für die Unterstützung und das
+            Dankeschön verwendet.
+          </div>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+</section>
 
     <section class="section supporters-section">
       <div class="shell">
@@ -288,21 +336,15 @@
             <p class="kicker">DANKE FÜR EURE UNTERSTÜTZUNG</p>
             <h2>Meine Unterstützer.</h2>
           </div>
-          <p>
-            Namen veröffentlichen wir nur mit Einverständnis. Wer lieber anonym bleiben möchte,
-            wird selbstverständlich nicht namentlich genannt.
-          </p>
         </div>
 
         <div class="supporter-list">
-          <span class="supporter-pill">Anna &amp; Marc</span>
-          <span class="supporter-pill">Familie Keller</span>
-          <span class="supporter-pill">Peter</span>
-          <span class="supporter-pill anonymous">Anonym</span>
+          <span class="supporter-pill">Mama &amp; Papa</span>
+          <span class="supporter-pill">Matthias Gysi</span>
         </div>
       </div>
     </section>
-
+<!--
     <section class="section sponsors-section">
       <div class="shell">
         <div class="section-heading">
@@ -341,7 +383,7 @@
         </p>
       </div>
     </section>
-
+-->
     <section class="section thankyou shell">
       <div class="thankyou-card">
         <p class="kicker">DANKE ❤️</p>
@@ -354,16 +396,7 @@
       </div>
     </section>
 
-    <section class="section updates shell">
-      <p class="kicker">UPDATES</p>
-      <h2>Auf dem Weg zum Event.</h2>
-      <article class="update-card">
-        <time>September 2026</time>
-        <h3>Die Seite ist online 🎉</h3>
-        <p>Hier können später kurze Updates zum Spendenstand, Training oder Event ergänzt werden.</p>
-      </article>
-    </section>
-  </main>
+</main>
 
   <footer>
     <div class="shell footer-inner">
