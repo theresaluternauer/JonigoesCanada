@@ -1,6 +1,6 @@
 // Fortschritt
 const ziel = 5000;
-const gesammelt = 2350;
+const gesammelt = 1500;
 
 function chf(value) {
   return "CHF " + new Intl.NumberFormat("de-CH").format(value);
