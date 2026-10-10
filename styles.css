@@ -649,3 +649,51 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
   .simple-form-grid{grid-template-columns:1fr}
   .simple-form-grid .field:last-child{grid-column:auto}
 }
+
+/* =====================================
+   BILDERGALERIE – natürliche Bildgrössen
+   ===================================== */
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.gallery .photo,
+.gallery .photo.photo-large {
+  flex: 0 1 auto;
+  width: auto;
+  max-width: 280px;
+  height: auto;
+  margin: 0;
+}
+
+.gallery .photo img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 220px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+.gallery .photo figcaption {
+  padding: 10px 4px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .gallery .photo,
+  .gallery .photo.photo-large {
+    max-width: 100%;
+  }
+
+  .gallery .photo img {
+    max-height: 200px;
+  }
+}
