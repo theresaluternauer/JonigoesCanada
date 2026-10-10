@@ -1,62 +1,85 @@
-// Fortschritt
+
+/* =========================================
+   SPENDENFORTSCHRITT
+   ========================================= */
+
 const ziel = 5000;
 const gesammelt = 1500;
 
+// Beträge im Schweizer Format darstellen
 function chf(value) {
   return "CHF " + new Intl.NumberFormat("de-CH").format(value);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const prozent = Math.min(100, Math.round((gesammelt / ziel) * 100));
+  const prozent = ziel > 0
+    ? Math.min(100, Math.max(0, Math.round((gesammelt / ziel) * 100)))
+    : 0;
+
   const raised = document.getElementById("amount-raised");
   const goal = document.getElementById("amount-goal");
   const percent = document.getElementById("progress-percent");
   const fill = document.getElementById("progress-fill");
+
   if (raised) raised.textContent = chf(gesammelt);
   if (goal) goal.textContent = chf(ziel);
   if (percent) percent.textContent = prozent + "%";
-  if (fill) requestAnimationFrame(() => fill.style.width = prozent + "%");
+
+  if (fill) {
+    fill.style.width = prozent + "%";
+  }
 });
 
-// Google-Sheet Web-App
-const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycbzTsNjAb7TTSK7SxAeqT44BfcaWVZDBbc-eA-F5aHfeLnHY6bnLGwCbP9LQZauzraSBqQ/exec";
+
+/* =========================================
+   GOOGLE SHEET
+   ========================================= */
+
+const FORM_ENDPOINT =
+  "https://script.google.com/macros/s/AKfycbzTsNjAb7TTSK7SxAeqT44BfcaWVZDBbc-eA-F5aHfeLnHY6bnLGwCbP9LQZauzraSBqQ/exec";
+
+
+/* =========================================
+   DANKESCHÖN: JA / NEIN
+   ========================================= */
 
 function showThankYouForm(show) {
   const form = document.getElementById("reward-form");
   const noMessage = document.getElementById("thanks-no-message");
   const buttons = document.querySelectorAll(".yes-no-button");
 
-  buttons.forEach(b => b.classList.toggle(
-    "active",
-    (show && b.dataset.answer === "yes") || (!show && b.dataset.answer === "no")
-  ));
+  buttons.forEach(button => {
+    const active =
+      (show && button.dataset.answer === "yes") ||
+      (!show && button.dataset.answer === "no");
 
-  if (show) {
-    form.style.display = "block";
-    noMessage.style.display = "none";
-  } else {
-    form.style.display = "none";
-    noMessage.style.display = "block";
-    form.reset();
-    const address = document.getElementById("address-field");
-    if (address) address.classList.add("hidden");
+    button.classList.toggle("active", active);
+  });
+
+  if (form) {
+    form.style.display = show ? "block" : "none";
+
+    if (!show) {
+      form.reset();
+    }
+  }
+
+  if (noMessage) {
+    noMessage.style.display = show ? "none" : "block";
   }
 }
 
-function isPhysicalReward(value) {
-  return value === "Persönliches Dankegeschenk" ||
-         value === "Dankeskarte und kleines Hockey-Souvenir";
-}
+
+/* =========================================
+   FORMULAR ABSENDEN
+   ========================================= */
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("reward-form");
-  const rewardSelect = document.getElementById("reward-select");
-  const addressField = document.getElementById("address-field");
   const formNote = document.getElementById("form-note");
 
-  rewardSelect.addEventListener("change", () => {
-    addressField.classList.toggle("hidden", !isPhysicalReward(rewardSelect.value));
-  });
+  // Falls kein Formular vorhanden ist:
+  if (!form) return;
 
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -64,13 +87,28 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!form.reportValidity()) return;
 
     const button = form.querySelector('button[type="submit"]');
+
+    if (!button) return;
+
     const data = new FormData(form);
-    data.set("publish_name", data.get("publish_name") ? "true" : "false");
+
+    // Keine Geschenkauswahl mehr.
+    // Im Google Sheet bleibt die bisherige Spalte erhalten.
+    data.set("reward", "Dankeschön gewünscht");
+
+    // Checkbox korrekt als true / false übertragen
+    data.set(
+      "publish_name",
+      data.has("publish_name") ? "true" : "false"
+    );
 
     button.disabled = true;
     button.textContent = "Wird gesendet …";
-    formNote.textContent = "Einen Moment …";
-    formNote.className = "submit-status";
+
+    if (formNote) {
+      formNote.textContent = "Einen Moment …";
+      formNote.className = "submit-status";
+    }
 
     try {
       await fetch(FORM_ENDPOINT, {
@@ -79,22 +117,39 @@ document.addEventListener("DOMContentLoaded", () => {
         mode: "no-cors"
       });
 
-      formNote.textContent = "Danke! Deine Angaben wurden übermittelt. 🏒";
-      formNote.className = "submit-status success";
+      // Hinweis:
+      // Wegen no-cors kann der Browser nicht überprüfen,
+      // ob Google Sheet den Eintrag tatsächlich gespeichert hat.
+
+      if (formNote) {
+        formNote.textContent =
+          "Anfrage gesendet! Vielen Dank für deine Unterstützung. 🏒";
+        formNote.className = "submit-status success";
+      }
+
       button.textContent = "Gesendet ✓";
 
       setTimeout(() => {
         form.reset();
         form.style.display = "none";
-        addressField.classList.add("hidden");
-        document.querySelectorAll(".yes-no-button").forEach(b => b.classList.remove("active"));
+
+        document.querySelectorAll(".yes-no-button").forEach(b => {
+          b.classList.remove("active");
+        });
+
         button.disabled = false;
         button.textContent = "Angaben senden";
       }, 2500);
+
     } catch (error) {
-      console.error(error);
-      formNote.textContent = "Die Übermittlung hat nicht geklappt. Bitte nochmals versuchen.";
-      formNote.className = "submit-status error";
+      console.error("Fehler beim Senden:", error);
+
+      if (formNote) {
+        formNote.textContent =
+          "Die Übermittlung hat nicht geklappt. Bitte nochmals versuchen.";
+        formNote.className = "submit-status error";
+      }
+
       button.disabled = false;
       button.textContent = "Angaben senden";
     }
