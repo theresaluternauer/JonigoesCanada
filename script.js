@@ -107,7 +107,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Keine Geschenkauswahl mehr.
     // Im Google Sheet bleibt die bisherige Spalte erhalten.
-    data.set("reward", "Dankeschön gewünscht");
+    data.set("reward",
+        data.get("wants_gift") === "yes"
+          ? "Dankeschön gewünscht"
+          : "Kein Dankeschön"
+      );
 
     // Checkbox korrekt als true / false übertragen
     data.set(
