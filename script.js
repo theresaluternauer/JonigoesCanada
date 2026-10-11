@@ -69,6 +69,19 @@ function showThankYouForm(show) {
   }
 }
 
+function toggleGiftFields() {
+  const wantsGift = document.querySelector(
+    'input[name="wants_gift"]:checked'
+  )?.value === "yes";
+
+  const giftFields = document.getElementById("gift-fields");
+  const address = document.getElementById("support-address");
+
+  giftFields.style.display = wantsGift ? "block" : "none";
+  address.required = wantsGift;
+
+  if (!wantsGift) address.value = "";
+}
 
 /* =========================================
    FORMULAR ABSENDEN
