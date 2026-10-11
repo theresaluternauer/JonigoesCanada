@@ -905,3 +905,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
   }
 }
 
+.donate-section h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.1;
+}
