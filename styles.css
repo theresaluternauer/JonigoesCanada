@@ -702,7 +702,13 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
   margin: 0 auto 16px;
   object-fit: contain;
 }
-  .gallery .photo img {
+.photo img {
     max-height: 200px;
   }
+}
+
+.intro p {
+  text-align: justify;
+  hyphens: auto;
+  line-height: 1.7;
 }
