@@ -829,3 +829,79 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
 .section {
   padding: 90px 0;
 }
+
+
+/* Zahlungsbereich: gleich hohe, kompakte Karten */
+
+.donate-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
+}
+
+.donate-grid .qr-card {
+  padding: 22px 24px;
+  min-height: 0;
+  height: 100%;
+  box-sizing: border-box;
+  border-radius: 14px;
+}
+
+/* TWINT-Karte: Inhalt vertikal zentrieren */
+.donate-grid .qr-card:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* TWINT-Logo etwas grösser */
+.donate-grid .twint-logo {
+  width: 85px;
+  max-width: 85px;
+  height: auto;
+  margin: 0 auto 12px;
+}
+
+/* Überschriften und Texte */
+.donate-grid .qr-card h3 {
+  font-size: 1.05rem;
+  margin: 6px 0 8px;
+}
+
+.donate-grid .qr-card p {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  margin: 4px 0 10px;
+}
+
+/* Bankkarte: weniger Abstand zwischen Angaben */
+.donate-grid .qr-card:nth-child(2) small {
+  margin-bottom: 2px !important;
+  font-size: 0.75rem;
+}
+
+.donate-grid .qr-card:nth-child(2) strong {
+  margin-bottom: 8px !important;
+  font-size: 0.9rem;
+}
+
+/* Bankkarte: Innenabstände reduzieren */
+.donate-grid .qr-card:nth-child(2) > div {
+  margin-top: 10px !important;
+}
+
+/* Smartphone */
+@media (max-width: 650px) {
+  .donate-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .donate-grid .qr-card {
+    height: auto;
+    padding: 18px;
+  }
+}
+
