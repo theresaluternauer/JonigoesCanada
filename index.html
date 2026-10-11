@@ -235,131 +235,112 @@ Mit deiner Spende hilfst du, mir diesen Traum zu verwirklichen. Jeder Beitrag z�
       </div>
     </section>
 
-    <section class="section simple-thanks-section">
+    
+<section class="section simple-thanks-section">
   <div class="shell">
     <div class="simple-thanks-card">
 
       <p class="kicker">EIN KLEINES DANKESCHÖN ❤️</p>
-      <h2>Wir möchten uns bei dir bedanken.</h2>
+      <h2>Danke für deine Unterstützung!</h2>
 
       <p class="simple-intro">
-        Deine Unterstützung bedeutet uns viel. Bei ausgewählten Spenden
-        möchten wir uns deshalb mit einer kleinen Überraschung bedanken.
-        Wenn du ein Dankeschön erhalten möchtest, hinterlasse uns nach
-        der Zahlung einfach deine Angaben.
+        Wir möchten uns bei ausgewählten Spenden mit einer
+        kleinen Überraschung bedanken.
+        Du kannst unabhängig davon entscheiden, ob dein
+        Name auf unserer Unterstützer-Wall erscheint.
       </p>
 
-      <div class="yes-no-row" role="group" aria-label="Dankeschön erhalten">
-        <button
-          type="button"
-          class="yes-no-button"
-          data-answer="yes"
-          onclick="showThankYouForm(true)">
-          Ja, gerne 🎁
-        </button>
+      <form id="reward-form">
 
-        <button
-          type="button"
-          class="yes-no-button secondary"
-          data-answer="no"
-          onclick="showThankYouForm(false)">
-          Nein, danke ❤️
-        </button>
-      </div>
+        <h3>Möchtest du ein Dankeschön erhalten?</h3>
 
-      <div id="thanks-no-message"
-           class="thanks-message"
-           style="display:none">
-        Danke für deine Unterstützung – und Go Joni! 🏒
-      </div>
+        <div class="yes-no-row">
+          <label>
+            <input type="radio"
+                   name="wants_gift"
+                   value="yes"
+                   onchange="toggleGiftFields()">
+            Ja, gerne 🎁
+          </label>
 
-      <form id="reward-form" style="display:none">
-
-        <div class="simple-form-grid">
-
-          <div class="field">
-            <label for="support-name">Name</label>
-            <input
-              id="support-name"
-              type="text"
-              name="name"
-              placeholder="z. B. Familie Muster"
-              required>
-          </div>
-
-          <div class="field">
-            <label for="support-email">E-Mail</label>
-            <input
-              id="support-email"
-              type="email"
-              name="email"
-              placeholder="name@beispiel.ch"
-              required>
-          </div>
-
-          <div class="field">
-            <label for="support-amount">Unterstützungsbetrag</label>
-
-            <div class="money-field">
-              <span>CHF</span>
-              <input
-                id="support-amount"
-                type="number"
-                name="amount"
-                min="1"
-                inputmode="numeric"
-                placeholder="50"
-                required>
-            </div>
-          </div>
-
+          <label>
+            <input type="radio"
+                   name="wants_gift"
+                   value="no"
+                   onchange="toggleGiftFields()"
+                   checked>
+            Nein, danke ❤️
+          </label>
         </div>
 
-        <div class="field full-field">
-          <label for="support-address">Postadresse</label>
-          <textarea
-            id="support-address"
-            name="address"
-            rows="3"
-            placeholder="Strasse und Hausnummer&#10;PLZ Ort"
-            required></textarea>
-          <small>
-            Wir benötigen deine Adresse nur, wenn wir dir ein Dankeschön
-            zusenden dürfen.
-          </small>
+        <div id="gift-fields" style="display:none">
+          <div class="field">
+            <label for="support-address">Postadresse</label>
+            <textarea
+              id="support-address"
+              name="address"
+              rows="3"
+              placeholder="Strasse, Hausnummer, PLZ und Ort">
+            </textarea>
+          </div>
         </div>
+
+        <h3>Dürfen wir deinen Namen veröffentlichen?</h3>
 
         <label class="privacy-toggle">
-          <input type="checkbox" name="publish_name">
+          <input type="checkbox"
+                 id="publish-name"
+                 name="publish_name">
           <span class="toggle-ui"></span>
-
           <span>
             <strong>Auf der Unterstützer-Wall erscheinen</strong>
             <small>
-              Mein Name darf auf dieser Webseite veröffentlicht werden.
+              Mein Name darf auf dieser Webseite
+              veröffentlicht werden.
             </small>
           </span>
         </label>
 
-        <div class="submit-row">
-          <button
-            type="submit"
-            class="button primary reward-submit">
-            Angaben senden
-          </button>
+        <div class="simple-form-grid">
+          <div class="field">
+            <label for="support-name">Name</label>
+            <input id="support-name"
+                   name="name"
+                   type="text"
+                   required>
+          </div>
 
-          <div class="submit-status" id="form-note">
-            Deine Angaben werden nur für die Unterstützung und das
-            Dankeschön verwendet.
+          <div class="field">
+            <label for="support-email">E-Mail</label>
+            <input id="support-email"
+                   name="email"
+                   type="email"
+                   required>
+          </div>
+
+          <div class="field">
+            <label for="support-amount">Spendenbetrag</label>
+            <input id="support-amount"
+                   name="amount"
+                   type="number"
+                   min="1"
+                   required>
           </div>
         </div>
 
-      </form>
+        <div class="submit-row">
+          <button type="submit" class="button primary">
+            Angaben senden
+          </button>
+          <div id="form-note" class="submit-status"></div>
+        </div>
 
+      </form>
     </div>
   </div>
 </section>
 
+    
     <section class="section supporters-section">
       <div class="shell">
         <div class="section-heading">
