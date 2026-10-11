@@ -773,6 +773,59 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
   }
 }
 
+
+/* Kompakte Zahlungsboxen */
+
+.donate-section {
+  padding-top: 35px;
+  padding-bottom: 35px;
+}
+
+.donate-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  align-items: start;
+}
+
+.donate-grid .qr-card {
+  padding: 18px 20px;
+  min-height: 0;
+  height: auto;
+  align-self: start;
+  border-radius: 14px;
+}
+
+.donate-grid .qr-card h3 {
+  font-size: 1.05rem;
+  margin: 8px 0;
+}
+
+.donate-grid .qr-card p {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  margin: 6px 0;
+}
+
+.donate-grid .twint-logo {
+  width: 45px;
+  max-width: 45px;
+  height: auto;
+  margin: 0 auto 8px;
+}
+
+/* Smartphone */
+@media (max-width: 650px) {
+  .donate-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .donate-grid .qr-card {
+    padding: 16px;
+  }
+}
+
+
 .section {
   padding: 90px 0;
 }
