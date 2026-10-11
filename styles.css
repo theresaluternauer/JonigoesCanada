@@ -695,7 +695,13 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
   .gallery .photo.photo-large {
     max-width: 100%;
   }
-
+.twint-logo {
+  display: block;
+  width: 110px;
+  height: auto;
+  margin: 0 auto 16px;
+  object-fit: contain;
+}
   .gallery .photo img {
     max-height: 200px;
   }
