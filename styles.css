@@ -714,3 +714,65 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
   hyphens: auto;
   line-height: 1.7;
 }
+
+
+/* Kompakter Abschnitt: Wohin geht die Unterstützung? */
+
+.costs-section {
+  padding-top: 35px;
+  padding-bottom: 35px;
+}
+
+.costs-section h2 {
+  font-size: 1.6rem;
+  margin-bottom: 18px;
+}
+
+.costs-section .kicker {
+  margin-bottom: 6px;
+}
+
+.cost-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.cost-card {
+  padding: 14px 10px;
+  min-height: 0;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.cost-card span {
+  display: block;
+  font-size: 1.4rem;
+  margin-bottom: 6px;
+}
+
+.cost-card h3 {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.cost-card p {
+  display: none;
+}
+
+/* Smartphone */
+@media (max-width: 600px) {
+  .cost-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .costs-section {
+    padding-top: 25px;
+    padding-bottom: 25px;
+  }
+}
+
+.section {
+  padding: 90px 0;
+}
