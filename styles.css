@@ -915,3 +915,17 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
   line-height: 1.15;
   margin-bottom: 16px;
 }
+
+/* Haupttitel – Schrift unverändert, neue Farben */
+
+.hero-joni {
+  color: #ed4055;
+  -webkit-text-fill-color: #ed4055;
+}
+
+.hero-hockey {
+  color: #65a9ff;
+  -webkit-text-fill-color: #65a9ff;
+  -webkit-text-stroke: 0;
+  text-shadow: none;
+}
