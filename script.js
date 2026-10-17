@@ -78,10 +78,33 @@ document.addEventListener("DOMContentLoaded", () => {
     event.preventDefault();
     if (!form.reportValidity()) return;
     const data = new FormData(form);
-    const method = data.get("payment_method");
-    data.set("reward", data.get("wants_gift") === "yes" ? "Dankeschön gewünscht" : "Kein Dankeschön");
-    data.set("publish_name", data.get("publish_choice") === "yes" ? "true" : "false");
-    data.set("payment_status", "Offen");
+    
+   const method = data.get("payment_method");
+   
+   data.set(
+     "reward",
+     data.get("wants_gift") === "yes"
+       ? "Dankeschön gewünscht"
+       : "Kein Dankeschön"
+   );
+   
+   data.set(
+     "publish_name",
+     data.get("publish_choice") === "yes" ? "true" : "false"
+   );
+   
+   // Postadresse übermitteln
+   const addressField = form.querySelector('[name="address"]');
+   
+   data.set(
+     "address",
+     data.get("wants_gift") === "yes"
+       ? (addressField?.value || "").trim()
+       : ""
+   );
+   
+   data.set("payment_status", "Offen");
+
 
     
 button.disabled = true;
