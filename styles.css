@@ -1086,3 +1086,20 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
   font-size: 0.9rem;
   color: #64748b;
 }
+
+.joni-story-photo {
+  padding: 0;
+  border: none;
+  overflow: hidden;
+}
+
+.joni-story-photo img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center;
+}
