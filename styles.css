@@ -1059,7 +1059,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
 
 /* 8. Bild: Canada */
 .gallery .photo:nth-child(3) img {
-  object-position: center 5%;
+  object-position: center 0%;
 }
 
 /* Foto neben "Hallo, ich bin Joni!" */
