@@ -1,0 +1,25 @@
+/* Ergänzende Gestaltung für das gemeinsame Spendenformular */
+.donation-form { max-width: 900px; padding: 26px; border-radius: 18px; background: #fff; color: #101a30; }
+.donation-fieldset { border: 0; padding: 0; margin: 0 0 22px; min-width: 0; }
+.donation-fieldset legend { font-weight: 750; font-size: 1rem; margin-bottom: 12px; }
+.payment-options { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+.payment-option { display:flex; align-items:center; gap: 10px; border: 1px solid #cbd3df; padding: 13px; border-radius: 12px; cursor: pointer; font-weight: 700; }
+.payment-option:has(input:checked) { border-color: #287ac7; background: #eff6ff; }
+.payment-twint-logo { width: 55px !important; max-width: 55px !important; height: auto !important; margin: 0 !important; }
+.payment-hint { margin: 0 0 22px; padding: 12px 15px; border-radius: 10px; background: #eef4fa; color: #28364b; line-height: 1.5; font-size: .92rem; }
+.payment-hint[hidden], .gift-address[hidden], .bank-confirmation[hidden] { display:none !important; }
+.donation-fields { display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 15px; margin-bottom: 22px; }
+.donation-form .field { display:flex; flex-direction:column; gap:6px; }
+.donation-form .field label { font-weight: 600; font-size: .88rem; }
+.donation-form input:not([type=radio]), .donation-form textarea { box-sizing:border-box; width:100%; min-width:0; padding:11px 12px; border:1px solid #cbd3df; border-radius:9px; background:white; color:#101a30; font:inherit; }
+.donation-form input[type=radio] { accent-color:#d42f48; }
+.donation-choices { display:flex; flex-wrap:wrap; gap:10px 22px; }
+.donation-choices label { display:flex; align-items:center; gap:7px; cursor:pointer; }
+.donation-help { font-size:.87rem; line-height:1.5; color:#5a6677; margin: 0 0 12px; }
+.gift-address { margin-top:14px; }
+.donation-form .submit-row { display:flex; align-items:center; flex-wrap:wrap; gap:14px; }
+.donation-form .submit-status { color:#24344d; font-size:.88rem; max-width:480px; }
+.bank-confirmation { max-width:900px; margin-top:16px; background:#fff; color:#101a30; border-radius:16px; padding:22px 26px; }
+.bank-confirmation h3 { margin-top:0; }
+.bank-confirmation small { color:#697487; }
+@media (max-width:650px) { .donation-form {padding:18px;} .payment-options,.donation-fields {grid-template-columns:1fr;} .donation-choices {flex-direction:column;} }
