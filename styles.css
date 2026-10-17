@@ -1027,7 +1027,6 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
 
 /* 3. Bild: Autogrammstunde mit Büehli */
 .gallery .photo:nth-child(3) img {
-  object-fit: cover;
   object-position: center 25%;
 }
 
