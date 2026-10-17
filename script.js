@@ -83,24 +83,41 @@ document.addEventListener("DOMContentLoaded", () => {
     data.set("publish_name", data.get("publish_choice") === "yes" ? "true" : "false");
     data.set("payment_status", "Offen");
 
-    button.disabled = true;
-    button.textContent = "Wird übermittelt …";
-    note.textContent = "Einen Moment …";
-    confirmation.hidden = true;
-    try {
-      await fetch(FORM_ENDPOINT, {method: "POST", body: data, mode: "no-cors"});
-      // Bei no-cors ist keine Bestätigung der Speicherung durch Google möglich.
-      note.textContent = "Anfrage übermittelt. Vielen Dank! Bitte beachte: Der Eingang im Google Sheet kann hier nicht automatisch bestätigt werden.";
-      note.className = "submit-status success";
-      if (method === "Banküberweisung") confirmation.hidden = false;
-      button.textContent = "Anfrage übermittelt";
-      // Kein automatisches Zurücksetzen: Angaben bleiben bei Rückfragen sichtbar.
-    } catch (error) {
-      console.error(error);
-      note.textContent = "Die Anfrage konnte nicht übermittelt werden. Bitte versuche es erneut.";
-      note.className = "submit-status error";
-      button.disabled = false;
-      button.textContent = "Unterstützung anfragen";
-    }
+    
+button.disabled = true;
+button.textContent = "Wird übermittelt …";
+note.textContent = "Einen Moment …";
+confirmation.hidden = true;
+
+try {
+  await fetch(FORM_ENDPOINT, {
+    method: "POST",
+    body: data,
+    mode: "no-cors"
+  });
+
+  if (method === "TWINT") {
+    note.textContent =
+      "Angaben übermittelt, vielen Dank! Du hörst von uns, sobald die TWINT-Anfrage erfolgt ist.";
+  } else if (method === "Banküberweisung") {
+    note.textContent =
+      "Angaben übermittelt, die Zahlungsangaben werden dir auch via E-Mail gesendet.";
+    confirmation.hidden = false;
+  }
+
+  note.className = "submit-status success";
+  button.textContent = "Übermittelt";
+
+  // Angaben bleiben sichtbar.
+
+} catch (error) {
+  console.error(error);
+  note.textContent =
+    "Die Übermittlung konnte nicht bestätigt werden. Bitte versuche es erneut.";
+  note.className = "submit-status error";
+  button.disabled = false;
+  button.textContent = "Unterstützen";
+}
+
   });
 });
