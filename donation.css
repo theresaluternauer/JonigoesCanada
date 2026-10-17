@@ -49,6 +49,31 @@ textarea:focus {
   color: #10213b !important;
 }
 
+.bank-qr {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.bank-qr-image {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  height: auto;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+.bank-qr-download {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 12px 20px;
+  background: #2455b8;
+  color: white;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
 textarea::placeholder {
   color: #8995a7 !important;
 }
