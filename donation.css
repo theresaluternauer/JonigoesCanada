@@ -77,3 +77,26 @@ textarea:focus {
 textarea::placeholder {
   color: #8995a7 !important;
 }
+
+/* Banküberweisung: besser lesbare Texte */
+.bank-confirmation {
+  color: #24344d;
+}
+
+.bank-confirmation h3 {
+  color: #0b1933;
+}
+
+.bank-confirmation p,
+.bank-confirmation small {
+  color: #52627a !important;
+}
+
+.bank-confirmation strong {
+  color: #152744 !important;
+}
+
+/* QR-Code Beschreibung */
+.bank-qr p {
+  color: #52627a !important;
+}
