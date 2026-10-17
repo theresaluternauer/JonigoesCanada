@@ -1032,7 +1032,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
 
 /* 8. Bild: Canada */
 .gallery .photo:nth-child(8) img {
-  object-position: center 1%;
+  object-position: center 2%;
 }
 
 /* Joni-Porträt: kleiner und etwas breiter */
