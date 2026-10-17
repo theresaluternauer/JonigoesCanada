@@ -929,3 +929,64 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
   -webkit-text-stroke: 0;
   text-shadow: none;
 }
+
+
+/* Persönlicher Eingangstext mit Foto */
+.joni-story-section {
+  background: #f4f7fb;
+  color: #0b1933;
+  padding: 72px 0;
+}
+.joni-story-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(240px, .8fr);
+  gap: clamp(28px, 5vw, 70px);
+  align-items: start;
+}
+.joni-story-section .kicker { color: #1769ff; }
+.joni-story-section h2 { color: #0b1933; margin-bottom: 26px; }
+.joni-story-section .joni-story-content > p:not(.kicker) {
+  color: #36465b;
+  line-height: 1.75;
+  margin: 0 0 17px;
+}
+.joni-story-section .joni-story-highlight {
+  color: #0b397b !important;
+  background: #e1edff;
+  border-left: 4px solid #1769ff;
+  border-radius: 0 12px 12px 0;
+  padding: 16px 20px;
+  font-size: 1.12rem;
+  font-weight: 800;
+}
+.joni-story-section .joni-story-thanks { font-weight: 800; color: #0b1933 !important; }
+.joni-story-section .joni-story-signature {
+  color: #1769ff !important;
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-top: 8px !important;
+}
+.joni-story-photo {
+  margin: 16px 0 0;
+  position: sticky;
+  top: 24px;
+}
+.joni-story-photo img {
+  width: 100%;
+  height: auto;
+  max-height: 580px;
+  object-fit: contain;
+  border-radius: 18px;
+  box-shadow: 0 16px 40px rgba(15, 30, 50, .12);
+}
+.joni-story-photo figcaption {
+  color: #64748b;
+  font-size: .82rem;
+  text-align: center;
+  margin-top: 10px;
+}
+@media (max-width: 760px) {
+  .joni-story-section { padding: 52px 0; }
+  .joni-story-layout { grid-template-columns: 1fr; }
+  .joni-story-photo { position: static; margin-top: 0; max-width: 440px; }
+}
