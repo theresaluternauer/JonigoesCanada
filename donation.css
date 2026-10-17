@@ -23,3 +23,13 @@
 .bank-confirmation h3 { margin-top:0; }
 .bank-confirmation small { color:#697487; }
 @media (max-width:650px) { .donation-form {padding:18px;} .payment-options,.donation-fields {grid-template-columns:1fr;} .donation-choices {flex-direction:column;} }
+/* Postadresse: heller Hintergrund auch beim Anklicken */
+textarea,
+textarea:focus {
+  background-color: #ffffff !important;
+  color: #10213b !important;
+}
+
+textarea::placeholder {
+  color: #8995a7 !important;
+}
