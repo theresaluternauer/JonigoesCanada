@@ -1095,3 +1095,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
   max-height: 100px;
   object-fit: contain;
 }
+/* Abstand zwischen Unterstützern und Sponsoren */
+.sponsors-subsection {
+  margin-top: 50px;
+}
