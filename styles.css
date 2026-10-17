@@ -1058,3 +1058,13 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
   transform: rotate(-4deg);
   width: fit-content;
 }
+
+.gallery .photo figcaption a {
+  color: #65a9ff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.gallery .photo figcaption a:hover {
+  text-decoration: underline;
+}
