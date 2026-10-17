@@ -1097,5 +1097,12 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
 }
 /* Abstand zwischen Unterstützern und Sponsoren */
 .sponsors-subsection {
-  margin-top: 50px;
+  margin-top: 70px;
+}
+.sponsors-subsection .kicker {
+  margin-bottom: 6px;
+}
+
+.sponsors-subsection h2 {
+  margin-top: 0;
 }
