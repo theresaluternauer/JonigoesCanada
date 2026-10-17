@@ -30,6 +30,25 @@ textarea:focus {
   color: #10213b !important;
 }
 
+/* Beschriftungen im Spendenformular */
+.donate-section label,
+.donate-section .field label {
+  color: #253550 !important;
+}
+
+/* Hinweise im Spendenformular */
+.donate-section small,
+.donate-section .form-hint {
+  color: #65748a !important;
+}
+
+/* Adressfeld */
+.donate-section textarea,
+.donate-section textarea:focus {
+  background: #ffffff !important;
+  color: #10213b !important;
+}
+
 textarea::placeholder {
   color: #8995a7 !important;
 }
