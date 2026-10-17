@@ -1042,3 +1042,19 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
 .gallery .photo:nth-child(8) img {
   object-position: center 2%;
 }
+/* Jonis persönlicher Text im Blocksatz */
+.joni-story-content > p:not(.kicker):not(.joni-story-signature) {
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* Joni als handschriftliche Unterschrift */
+.joni-story-signature {
+  font-family: "Caveat", cursive;
+  font-size: 3rem !important;
+  font-weight: 600 !important;
+  line-height: 1.2;
+  text-align: left;
+  transform: rotate(-4deg);
+  width: fit-content;
+}
