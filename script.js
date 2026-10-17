@@ -3,7 +3,7 @@
    SPENDENFORTSCHRITT
    ========================================= */
 
-const ziel = 5000;
+const ziel = 6500;
 const gesammelt = 1500;
 
 // Beträge im Schweizer Format darstellen
