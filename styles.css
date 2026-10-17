@@ -1061,3 +1061,28 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
 .gallery .photo:nth-child(3) img {
   object-position: center 10%;
 }
+
+/* Foto neben "Hallo, ich bin Joni!" */
+
+.joni-story-photo {
+  margin: 0;
+  align-self: start;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.joni-story-photo img {
+  display: block;
+  width: 100%;
+  height: 440px;
+  object-fit: cover;
+  object-position: center 30%;
+  border-radius: 20px;
+}
+
+.joni-story-photo figcaption {
+  padding: 12px 8px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #64748b;
+}
