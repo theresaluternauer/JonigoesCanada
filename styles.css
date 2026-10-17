@@ -1068,3 +1068,30 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
 .gallery .photo figcaption a:hover {
   text-decoration: underline;
 }
+/* Sponsoren ohne weisse Karten */
+.supporters-section .sponsor-card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0;
+  padding: 10px;
+  min-height: 100px;
+}
+
+.supporters-section .sponsor-card:hover {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: scale(1.04);
+}
+
+.supporters-section .sponsor-grid {
+  margin-top: 20px;
+}
+
+.supporters-section .sponsor-card img {
+  width: auto;
+  max-width: 200px;
+  max-height: 100px;
+  object-fit: contain;
+}
