@@ -990,3 +990,58 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
   .joni-story-layout { grid-template-columns: 1fr; }
   .joni-story-photo { position: static; margin-top: 0; max-width: 440px; }
 }
+
+
+/* Einheitliche Hockey-Bildergalerie */
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px 20px;
+  align-items: start;
+}
+
+.gallery .photo,
+.gallery .photo.photo-large {
+  width: 100%;
+  max-width: none;
+  min-height: 0;
+  margin: 0;
+}
+
+.gallery .photo img {
+  width: 100%;
+  height: 240px;
+  max-height: none;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 14px;
+}
+
+.gallery .photo figcaption {
+  padding: 10px 6px 0;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  text-align: center;
+  color: #aab3c2;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Smartphone */
+@media (max-width: 600px) {
+  .gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery .photo img {
+    height: 260px;
+    max-height: none;
+  }
+}
+
