@@ -1062,44 +1062,30 @@ footer{border-top:1px solid var(--line);padding:28px 0;color:#788598;font-size:.
   object-position: center 1%;
 }
 
-/* Foto neben "Hallo, ich bin Joni!" */
+/* Foto im Abschnitt "Hallo, ich bin Joni!" */
 
 .joni-story-photo {
+  width: 100%;
   margin: 0;
-  align-self: start;
-  overflow: hidden;
-  border-radius: 20px;
+  padding: 0;
+  border: 0;
+  background: transparent;
 }
 
 .joni-story-photo img {
   display: block;
   width: 100%;
-  height: 440px;
+  max-width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
   object-fit: cover;
-  object-position: center 50%;
+  object-position: center;
   border-radius: 20px;
 }
 
 .joni-story-photo figcaption {
-  padding: 12px 8px;
+  padding: 12px 0;
   text-align: center;
   font-size: 0.9rem;
   color: #64748b;
-}
-
-.joni-story-photo {
-  padding: 0;
-  border: none;
-  overflow: hidden;
-}
-
-.joni-story-photo img {
-  display: block;
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  padding: 0;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
-  object-position: center;
 }
