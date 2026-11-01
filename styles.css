@@ -207,10 +207,11 @@ h2{
 .video-placeholder small{color:var(--muted)}
 
 /* YouTube-Video: kompakt und zentriert */
+/* YouTube Short – Hochformat */
 .video-embed {
   width: 100%;
-  max-width: 850px;
-  aspect-ratio: 16 / 9;
+  max-width: 320px;
+  aspect-ratio: 9 / 16;
   margin: 0 auto;
   border-radius: 18px;
   overflow: hidden;
@@ -223,7 +224,6 @@ h2{
   height: 100%;
   border: none;
 }
-
 .gallery{
   display:grid;
   grid-template-columns:1.5fr 1fr;
