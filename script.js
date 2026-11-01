@@ -4,7 +4,7 @@
    ========================================= */
 
 const ziel = 6500;
-const gesammelt = 1650;
+const gesammelt = 1700;
 
 // Beträge im Schweizer Format darstellen
 function chf(value) {
