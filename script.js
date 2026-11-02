@@ -42,6 +42,16 @@ const FORM_ENDPOINT =
 /* =========================================
    SPENDENFORMULAR
    ========================================= */
+// Akzeptiert z. B. 300, 300.-, CHF 300, 300 CHF und 300,50.
+function parseSpendenbetrag(eingabe) {
+  let wert = String(eingabe).trim().toLowerCase();
+  wert = wert.replace(/^chf\s*/, "").replace(/\s*chf$/, "").trim();
+  wert = wert.replace(/\.-$/, "").replace(/,/g, ".");
+  if (!/^\d+(?:\.\d{1,2})?$/.test(wert)) return null;
+  const betrag = Number(wert);
+  return Number.isFinite(betrag) && betrag >= 1 ? betrag : null;
+}
+
 function updateDonationForm() {
   const method = document.querySelector('input[name="payment_method"]:checked')?.value;
   document.getElementById("twint-info").hidden = method !== "TWINT";
@@ -59,6 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const note = document.getElementById("form-note");
   const confirmation = document.getElementById("bank-confirmation");
   const button = form.querySelector('button[type="submit"]');
+  const betragFeld = document.getElementById("support-amount");
+  betragFeld.addEventListener("input", () => betragFeld.setCustomValidity(""));
+
 
   form.querySelectorAll('input[name="payment_method"], input[name="wants_gift"]').forEach(input => {
     input.addEventListener("change", updateDonationForm);
@@ -76,8 +89,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   form.addEventListener("submit", async event => {
     event.preventDefault();
+    const betrag = parseSpendenbetrag(betragFeld.value);
+    betragFeld.setCustomValidity(betrag === null
+      ? "Bitte einen gültigen Betrag eingeben, z. B. 50, 50.- oder 50 CHF."
+      : "");
     if (!form.reportValidity()) return;
     const data = new FormData(form);
+    // Für Google Sheets immer den bereinigten numerischen Wert übermitteln.
+    data.set("amount", String(betrag));
     
    const method = data.get("payment_method");
    
